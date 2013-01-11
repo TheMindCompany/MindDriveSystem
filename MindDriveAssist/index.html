@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>GM Dashboard App</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<link rel="stylesheet" href="GMLIB/com.gm.widgets.css" type="text/css"/>
+		<script type="text/javascript" src="GMLIB/com.gm.widgets.js"></script>
+		<script type="text/javascript" src="GMLIB/comm.js"></script>
+		<script type="text/javascript" src="GMLIB/info.js"></script>
+		<script type="text/javascript" src="GMLIB/io.js"></script>
+		<script type="text/javascript" src="GMLIB/media.js"></script>
+		<script type="text/javascript" src="GMLIB/nav.js"></script>
+		<script type="text/javascript" src="GMLIB/phone.js"></script>
+		<script type="text/javascript" src="GMLIB/system.js"></script>
+		<script type="text/javascript" src="GMLIB/ui.js"></script>
+		<script type="text/javascript" src="GMLIB/util.js"></script>
+		<script type="text/javascript" src="GMLIB/voice.js"></script>
+		<script type="text/javascript" src="codesamples.js"></script>
+		<link rel="stylesheet" href="style.css" type="text/css"/>
+    </head>
+    <body onload="gm.system.init();javascript:init();">
+    
+    <h2>HMI JavaScript API Code Samples Application</h2>
+    
+    <p>
+    	This application demonstrates basic usage of a variety of JavaScript APIs available in the HMI system. Click on a section to expand it. 
+    	More information can be found in the Eclipse Help Documentation (Help -&gt; Help Contents -&gt; GM Developer's Library).
+    </p>
+
+
+
+    <div class="group">
+    	<div class="title">
+    		AUDIO
+    	</div>
+    	<div class="field">
+    		<h3>gm.media.play</h3><div id="audio-play"></div>
+    	</div>
+    	<div class="field">
+			<h3>gm.audio.pause</h3><div id="audio-pause"></div>
+		</div>
+		<div class="field">
+			<h3>gm.media.seek</h3><div id="audio-seek"></div>
+		</div>
+		<div class="field">
+    		<h3>gm.media.stop</h3><div id="audio-stop"></div>
+    	</div>
+    </div>
+    
+        <div class="group">
+    	<div class="title">
+    		COMMUNICATION
+    	</div>
+    	<div class="field">
+    		<h3>gm.comm.watchNetworkConnectivity</h3><div id="watchNetwork"></div>
+    	</div>
+    	<div class="field">
+			<h3>gm.comm.clearNetworkConnectivity</h3><div id="clearNetwork"></div>
+		</div>
+		<div class="field">
+			<h3>gm.comm.getNetworkConnectivity</h3><div id="getNetwork"></div>
+		</div>
+    </div>
+    
+    <div class="group">
+    	<div class="title">
+    		PHONE
+    	</div>
+    	<div class="field">
+    		<h3>gm.phone.dialPhoneNumber</h3>
+    		<div id="phone-input"></div>
+    		<div id="phone-button"></div>
+    	</div>
+    </div>
+
+    <div class="group">
+    	<div class="title">
+    		FILE I/O
+    	</div>
+    	<div class="field">
+    		<h3>gm.io.writeFile</h3>
+    		<div id="file-name-input"></div>
+    		<div id="contents-input"></div>
+    		<div id="file-write-btn"></div>
+    	</div>
+    	<div class="field">
+    		<h3>gm.io.writeBinaryFile</h3>
+    		<div id="binfile-name-input"></div>
+    		<div id="bincontents-input"></div>
+    		<div id="binfile-write-btn"></div>
+    	</div>
+    	<div class="field">
+    		<h3>gm.io.readFile</h3>
+    		<div id="file-read-input"></div>
+    		<div id="file-read-btn"></div>
+    	</div>
+    	<div class="field">
+    		<h3>gm.io.deleteFile</h3>
+    		<div id="file-del-input"></div>
+    		<div id="file-del-btn"></div>
+    	</div>
+    	<div class="field">
+    		<h3>gm.io.getResource</h3>
+    		<div id="get-resource-button"></div>
+    	</div>
+    </div>
+    
+   	<div class="group">
+    	<div class="title">
+    		NAV
+    	</div>
+    	<div class="field">
+    		<h3>gm.nav.watchDestination</h3>
+    		<div id="watchDest-button"></div>
+    	</div>
+    	<div class="field">
+    		<h3>gm.nav.clearDestination</h3>
+    		<div id="clearDest-button"></div>
+    	</div>
+    	<div class="field">
+    		<h3>gm.nav.getDestination</h3>
+    		<div id="getDest-button"></div>
+    	</div>
+    	<div class="field">
+    		<h3>gm.nav.setDestination</h3>
+    		<div id="setDest-button"></div>
+    	</div>
+    	
+    </div>
+    
+    <div class="group">
+    	<div class="title">
+    		INFORMATION
+    	</div>
+    	<div class="field">
+    		<h3>gm.info.getCurrentPosition</h3>
+    		<div id="gps-button"></div>
+    		<div id="gps-output" class="label"></div>
+    	</div>
+    	<div class="field">
+    		<h3>gm.info.watchPosition</h3>
+    		<div id="watch-gps-button"></div>
+    		<div id="watch-gps-output" class="label"></div>
+    	</div>
+    	<div class="field">
+    		<h3>gm.info.clearPosition</h3>
+    		<div id="clear-gps-button"></div>
+    	</div>
+    	<div class="field">
+    		<h3>gm.info.getVehicleConfiguration</h3>
+    		<div id="vehicle-config-button"></div>
+    		<div id="vehicle-config-output"></div>
+    	</div>
+    	<div class="field">
+    		<h3>gm.info.watchVehicleData</h3>
+    		<div id="watchVehicle-data-button"></div>
+    	</div>
+    	
+    	<div class="field">
+    		<h3>gm.info.clearVehicleData</h3>
+    		<div id="clearVehicle-data-button"></div>
+    	</div>
+    	<div class="field">
+    		<h3>gm.info.getVehicleData</h3>
+    		<div id="vehicle-data-button"></div>
+    		<div id="vehicle-data-output"></div>
+    	</div>
+    	<div class="field">
+    		<h3>gm.info.getVIN()</h3>
+    		<div id="VIN-data-button"></div>
+    	</div>
+    	<div class="field">
+    		<h3>gm.info.getRadioInfo</h3>
+    		<div id="radio-btn"></div>
+    		<div id="radio-output"></div>
+    	</div>
+    	<div class="field">
+    		<h3>gm.info.watchRadioInfo</h3>
+    		<div id="watch-radio-button"></div>
+    	</div>
+    	<div class="field">
+    		<h3>gm.info.clearRadioInfo</h3>
+    		<div id="clear-radio-button"></div>
+    	</div>
+    	<div class="field">
+    		<h3>gm.info.getUser</h3>
+    		<div id="get-user-button"></div>
+    	</div>
+    	<div class="field">
+    		<h3>gm.info.watchRotaryControl</h3>
+    		<div id="watch-rotary-button"></div>
+    	</div>
+    	<div class="field">
+    		<h3>gm.info.clearRotaryControl</h3>
+    		<div id="clear-rotary-button"></div>
+    	</div>
+    	<div class="field">
+    		<h3>gm.info.watchActiveDeviceConnected</h3>
+    		<div id="watch-device-button"></div>
+    	</div>
+    	<div class="field">
+    		<h3>gm.info.clearActiveDeviceConnected</h3>
+    		<div id="clear-device-button"></div>
+    	</div>
+    	<div class="field">
+    		<h3>gm.info.watchButtons</h3>
+    		<div id="watch-button-button"></div>
+    	</div>
+    	<div class="field">
+    		<h3>gm.info.clearButtons</h3>
+    		<div id="clear-button-button"></div>
+    	</div>
+    	<div class="field">
+    		<h3>gm.info.getVersion</h3>
+    		<div id="get-version-button"></div>
+    	</div>
+    	<div class="field">
+    		<h3>gm.info.getNetworkConnectivity</h3>
+    		<div id="get-network-button"></div>
+    	</div>
+    	<div class="field">
+    		<h3>gm.info.getVersionDisplayText</h3>
+    		<div id="get-versiondisplay-button"></div>
+    	</div>
+    	<div class="field">
+    		<h3>gm.info.getMyVersion</h3>
+    		<div id="get-myversion-button"></div>
+    	</div>
+    </div>
+    
+    
+    <div class="group">
+    	<div class="title">
+    		SYSTEM
+    	</div>
+    	<div class="field">
+    		<h3>gm.system.watchFocus</h3>
+    		<div id="watch-focus-button"></div>
+    	</div>
+    	<div class="field">
+    		<h3>gm.system.clearFocus</h3>
+    		<div id="clear-focus-button"></div>
+    	</div>
+    	<div class="field">
+    		<h3>gm.system.requestFocus</h3>
+    		<div id="request-focus"></div>
+    	</div>
+    	<div class="field">
+    		<h3>gm.system.releaseFocus</h3>
+    		<div id="release-focus"></div>
+    	</div>
+    	<div class="field">
+    		<h3>gm.system.changeFriendlyName</h3>
+    		<div id="change-friendly-name"></div>
+    	</div>
+    	
+    	
+    	<div class="field">
+    		<h3>gm.system.watchSpeed</h3>
+    		<div id="watch-speed-button"></div>
+    	</div>
+    	<div class="field">
+    		<h3>gm.system.clearSpeed</h3>
+    		<div id="clear-speed-button"></div>
+    	</div>
+    	<div class="field">
+    		<h3>gm.system.getSpeed</h3>
+    		<div id="get-speed-button"></div>
+    	</div>
+    	<div class="field">
+    		<h3>gm.system.restartApp</h3>
+    		<div id="restart-app-button"></div>
+    	</div>
+    	<div class="field">
+    		<h3>gm.system.closeApp</h3>
+    		<div id="close-app-button"></div>
+    	</div>
+    	<div class="field">
+    		<h3>gm.system.setShutdown</h3>
+    		<div id="set-shutdown-button"></div>
+    	</div>
+    	<div class="field">
+    		<h3>gm.system.dataIsValid</h3>
+    		<div id="data-valid-input"></div>
+    		<div id="data-valid-button"></div>
+    	</div>
+    </div>
+    
+    
+    <div class="group">
+    	<div class="title">
+    		UI
+    	</div>
+    	<div class="field">
+    		<h3>gm.ui.showAlert</h3>
+    		<div id="show-alert-button"></div>
+    		<div id="show-alert-output"></div>
+    	</div>
+    </div> 
+    
+    <div class="group">
+    	<div class="title">
+    		UTIL
+    	</div>
+    	<div class="field">
+    		<h3>gm.util.logEvent</h3>
+    		<div id="log-event-button"></div>
+    		
+    	</div>
+    </div>   
+    
+    <div class="group">
+    	<div class="title">
+    		VIDEO
+    	</div>
+    	<div class="field">
+    		<h3>gm.media.play</h3>
+    		<div id="video-play"></div>
+    	</div>
+    </div>
+
+    <div class="group">
+                	<div class="title">
+                		WIDGETS
+                	</div>
+                	<div class="field">
+                		<h3>gm.widgets.Keyboard (standalone)</h3>
+                		<div id="keyboard"></div>
+                	</div>
+
+                	<div class="field">
+                		<h3>gm.widgets.Keyboard (standalone email)</h3>
+                		<div id="keyboardEmail"></div>
+                	</div>
+
+                	<div class="field">
+                		<h3>gm.widgets.Numberpad (standalone)</h3>
+                		<div id="numpadS"></div>
+                	</div>
+
+                	<div class="field">
+                		<h3>gm.widgets.Numberpad (Multiple Fields)</h3>
+                		<div id="numpadMult"></div>
+                		<br>
+                		<div id="numpadDiv">
+                			<label class="inputLabel">Input1</label>
+                			<input><br>
+                			<label class="inputLabel">Input2</label>
+                			<input>
+                		</div>
+                	</div>
+
+                	       <div class="field">
+                		<h3>gm.widgets.Keyboard (Multiple Fields)</h3>
+                		<div id="keyboardMult"></div>
+                		<br>
+                		<div id="keyboardDiv">
+                			<label class="inputLabel">Input1</label>
+                			<input><br>
+                			<label class="inputLabel">Input2</label>
+                			<input>
+                		</div>
+                	</div>
+                	
+          			<div class="field">
+                		<h3>gm.widgets.Checkbox</h3>
+                		<div id="checkboxDiv"></div>
+                	</div>
+                	<div class="field">
+                		<h3>gm.widgets.RadioButon</h3>
+                		<div id="radiobuttonDiv"></div>
+                	</div>
+                	<div class="field">
+                		<h3>gm.widgets.TextField</h3>
+                		<div id="textfieldDiv"></div>
+                	</div>
+                	<div class="field">
+                		<h3>gm.widgets.PasswordField</h3>
+                		<div id="passwordDiv"></div>
+                	</div>
+                	<div class="field">
+                		<h3>gm.widgets.NumberField</h3>
+                		<div id="numberfieldDiv"></div>
+                	</div>
+                	
+                	
+              </div>
+
+    
+    </body>
+</html>
