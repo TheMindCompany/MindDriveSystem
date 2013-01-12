@@ -1,6 +1,26 @@
 import bb.cascades 1.0
 
-Page {
+Page {    
+    id: homeScreen
+    
+//Background container        
+Container {
+	objectName: "mind_template_preferences"
+	topPadding: 200
+	
+	//Background 
+	background: backgroundPaint.imagePaint            
+	attachedObjects: [
+	    ImagePaintDefinition {
+	        id: backgroundPaint
+	        imageSource: "asset:///img/editingBG.png"
+	        repeatPattern: RepeatPattern.XY
+	    }
+	]//End Background
+        
+    //Elements
     Container {
-    }
-}
+
+    }//End Elements
+}//End Background Container
+}//End Page
