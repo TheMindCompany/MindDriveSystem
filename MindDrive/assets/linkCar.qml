@@ -5,7 +5,7 @@ Page {
     
 //Background container        
 Container {
-	objectName: "mind_template_preferences"
+	objectName: "mind_template_linkCar"
 	topPadding: 200
 	
 	//Background 
@@ -20,7 +20,7 @@ Container {
         
     //Elements
     Container {
-
+        
     }//End Elements
 }//End Background Container
 }//End Page

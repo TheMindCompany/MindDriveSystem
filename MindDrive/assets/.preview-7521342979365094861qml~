@@ -21,19 +21,23 @@ Container {
    Container {
        layout: StackLayout {}
        ExpandableItem {
-           headerText: "Data To Track"
-           bodyText: "asset:///models/trackData.xml"
+           headerText: "click to expand 1"
+           bodyText: "this is my first custom body text"
            expandImage: "asset:///img/plus.png";
            collapseImage: "asset:///img/minus.png";
            bodyVisible: false
        }
        ExpandableItem {
-           headerText: "Auto Reports"
-           bodyText: "asset:///models/trackData.xml"
+           headerText: "click to expand 2"
+           bodyText: "this is my second custom body text"
            expandImage: "asset:///img/plus.png";
            collapseImage: "asset:///img/minus.png";
            bodyVisible: true
        }
    }
+
+
+
+
 }//End Background Container
 }//End Page

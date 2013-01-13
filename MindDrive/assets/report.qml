@@ -5,7 +5,7 @@ Page {
     
 //Background container        
 Container {
-	objectName: "mind_template_preferences"
+	objectName: "mind_template_reports"
 	topPadding: 200
 	
 	//Background 
