@@ -17,23 +17,10 @@ Container {
 	        repeatPattern: RepeatPattern.XY
 	    }
 	]//End Background
+        
+    //Elements
+    Container {
 
-   Container {
-       layout: StackLayout {}
-       ExpandableItem {
-           headerText: "Data To Track"
-           bodyText: "asset:///models/trackData.xml"
-           expandImage: "asset:///img/plus.png";
-           collapseImage: "asset:///img/minus.png";
-           bodyVisible: false
-       }
-       ExpandableItem {
-           headerText: "Auto Reports"
-           bodyText: "asset:///models/trackData.xml"
-           expandImage: "asset:///img/plus.png";
-           collapseImage: "asset:///img/minus.png";
-           bodyVisible: true
-       }
-   }
+    }//End Elements
 }//End Background Container
 }//End Page
