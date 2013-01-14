@@ -6,7 +6,6 @@ Page {
 //Background container        
 Container {
 	objectName: "mind_template_reports"
-	topPadding: 200
 	
 	//Background 
 	background: backgroundPaint.imagePaint            
@@ -16,8 +15,37 @@ Container {
 	        imageSource: "asset:///img/editingBG.png"
 	        repeatPattern: RepeatPattern.XY
 	    }
-	]//End Background
-        
+	]//End Background		
+	
+	//Page Header
+		Container {
+			layout: DockLayout {}
+			preferredWidth: maxWidth
+			leftPadding: 25
+			rightPadding: 25
+			topPadding: 25
+			bottomMargin: 40
+			
+			//Header Icon 
+            Container { 
+                layout: DockLayout {}
+                horizontalAlignment: HorizontalAlignment.Right          
+    	        ImageView {
+    	            objectName: "mindDriveReport"                
+    	            imageSource: "img/buildReport.png"}
+            }//End Header Icon
+            
+            //Header Text            
+	        Container {  
+	        layout: DockLayout {}
+            horizontalAlignment: HorizontalAlignment.Left        
+            Label {
+             text: "Reports"
+                textStyle.color: Color.White
+                textStyle.fontWeight: FontWeight.Bold
+                textStyle.fontSize: FontSize.XXLarge}
+            }//End Header Text
+        }//End Page Header
     //Elements
     Container {
 

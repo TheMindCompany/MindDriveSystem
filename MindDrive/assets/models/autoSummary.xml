@@ -1,0 +1,6 @@
+<model>
+	<listItem title="Auto"/>
+	<listItem title="Time Interval"/>
+		<listItemDate/>
+	<listItem title="Each Drive Trip"/>
+</model>

@@ -1,7 +1,7 @@
-<root>
+<model>
 	<listItem title="Time"/>
 	<listItem title="Distance"/>
 	<listItem title="Fuel Consumption"/>
 		<listItemSub title="Gas"/>
 		<listItemSub title="Electricity"/>
-</root>
+</model>

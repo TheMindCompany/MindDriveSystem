@@ -40,15 +40,74 @@ Container {
                                
 	       //Component One    
 	       ListItemComponent {
-	           type: listItem
+	           type: "listItem"
 	           Container {
-               Label { text: ListItemData.title
-	                   textStyle.color: Color.create("#ff0173ff")}
-	           CheckBox {
-                checked: false}       
-	           }
-	       }//End Component One
+	               layout: DockLayout {}
+	               preferredWidth: maxWidth
+	               leftPadding: 20
+	               rightPadding: 20
+	               topPadding: 25
+	               bottomMargin: 25
+		           Container {
+		               layout: DockLayout {}
+		               horizontalAlignment: HorizontalAlignment.Right
+	                    CheckBox {
+	                    checked: false}
+	                }
+	                Container {
+	                    layout: DockLayout {}
+                        horizontalAlignment: HorizontalAlignment.Left
+	                    Label { text: ListItemData.title
+	                        textStyle.color: Color.White
+	                        textStyle.fontSize: FontSize.Large
+	                        textStyle.fontWeight: FontWeight.Bold}
+	                }
+                }
+	       },//End Component One
 	       
+	       //Component Two
+	      ListItemComponent {
+               type: "listItemSub"
+               	           Container {
+               	               layout: DockLayout {}
+               	               preferredWidth: maxWidth
+               	               leftPadding: 80
+               	               rightPadding: 20
+               	               bottomMargin: 25
+               	               topPadding: 25
+               		           Container {
+               		               layout: DockLayout {}
+               		               horizontalAlignment: HorizontalAlignment.Right
+               	                    CheckBox {
+               	                    checked: false}
+               	                }
+               	                Container {
+               	                    layout: DockLayout {}
+                                       horizontalAlignment: HorizontalAlignment.Left
+               	                    Label { text: ListItemData.title
+               	                        textStyle.color: Color.White
+               	                        textStyle.fontSize: FontSize.Large
+               	                        textStyle.fontWeight: FontWeight.Normal
+                                    }
+               	                }
+               	            }
+           },//End Component Two
+           
+           //Compontent Three
+           ListItemComponent {
+               type: "listItemDate"
+               Container {                                        
+  	               preferredWidth: maxWidth
+  	               leftPadding: 30
+  	               rightPadding: 30
+  	               bottomMargin: 25
+  	               topPadding: 25   
+	               DateTimePicker {            
+	                   title: "Starting Date"
+	                   value: dateFromTime()
+	               }
+               }
+           }
        ]//End List of Components
     }//End List View
 }

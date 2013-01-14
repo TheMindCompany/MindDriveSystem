@@ -1,0 +1,7 @@
+<model>
+	<listItem title="Email"/>
+	<listItem title="SMS"/>
+	<listItem title="Data Email"/>
+		<listItemSub title="XML"/>
+		<listItemSub title="SQL"/>
+</model>
