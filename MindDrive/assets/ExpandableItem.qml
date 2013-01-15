@@ -4,6 +4,7 @@ Container {
     property alias prefHeader: btnText.text
     property alias prefList: modelSource.source
     property alias prefVisible: xmlBody.visible
+    property alias prefSize: xmlBody.preferredHeight
     onPrefVisibleChanged: {
         if (prefVisible) {//when true have minus show
             btnHeader.defaultImageSource = "img/minus.png";
@@ -18,6 +19,23 @@ Container {
         layout: DockLayout {}
         verticalAlignment: VerticalAlignment.Center
         overlapTouchPolicy: OverlapTouchPolicy.Allow
+        Container {
+            leftPadding: 110
+            layout: DockLayout {
+                        
+                    }
+                    horizontalAlignment: HorizontalAlignment.Left
+            verticalAlignment: VerticalAlignment.Center
+            bottomPadding: 8
+            Label {
+		        id: btnText
+		        text: "default text"
+	            textStyle.color: Color.White
+	            textStyle.fontSize: FontSize.XLarge
+	            textStyle.fontWeight: FontWeight.Bold
+	            maxWidth: maxWidth
+	        }
+	    }
         ImageButton { 
                 id: btnHeader       
 	        defaultImageSource: {
@@ -39,33 +57,15 @@ Container {
 	            }
 	        }
         }//End Image Button
-        
-        Container {
-            leftPadding: 110
-            layout: DockLayout {
-                        
-                    }
-                    horizontalAlignment: HorizontalAlignment.Left
-            verticalAlignment: VerticalAlignment.Center
-            bottomPadding: 8.0
-            Label {
-		        id: btnText
-		        text: "default text"
-	            textStyle.color: Color.White
-	            textStyle.fontSize: FontSize.XLarge
-	            textStyle.fontWeight: FontWeight.Bold
-	            maxWidth: maxWidth
-	        }
-	    }
 	}
 	
     ListView {
-        id: xmlBody 
-        
-                preferredHeight: 900
+        id: xmlBody
+        preferredHeight: 700
         dataModel: XmlDataModel {
             id: modelSource
                        source: "model default"}
+           
        //List of Components
        listItemComponents: [  
                                
@@ -75,8 +75,8 @@ Container {
 	           Container {
 	               layout: DockLayout {}
 	               preferredWidth: maxWidth
-	               leftPadding: 20
-	               rightPadding: 20
+	               leftPadding: 40
+	               rightPadding: 40
 	               topPadding: 25
 	               bottomMargin: 25
 		           Container {
@@ -103,7 +103,7 @@ Container {
                	               layout: DockLayout {}
                	               preferredWidth: maxWidth
                	               leftPadding: 80
-               	               rightPadding: 20
+               	               rightPadding: 40
                	               bottomMargin: 25
                	               topPadding: 25
                		           Container {
@@ -129,8 +129,8 @@ Container {
                type: "listItemDate"
                Container {                                        
   	               preferredWidth: maxWidth
-  	               leftPadding: 30
-  	               rightPadding: 30
+  	               leftPadding: 50
+  	               rightPadding: 50
   	               bottomMargin: 25
   	               topPadding: 25   
 	               DateTimePicker {            
@@ -146,7 +146,7 @@ Container {
                Container {                                        
   	               preferredWidth: maxWidth
   	               leftPadding: 80
-  	               rightPadding: 30
+  	               rightPadding: 50
   	               bottomMargin: 25
 	  	           topPadding: 25   
 	  	           DropDown {

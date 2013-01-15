@@ -1,5 +1,5 @@
 <model>
-	<listItem title="Data To Track" location="models/trackData.xml" visable="true" size="650"/>
+	<listItem title="Data To Track" location="models/trackData.xml" visable="true" size="550"/>
 	<listItem title="Auto Reports" location="models/autoSummary.xml" visable="false" size="950"/>
 	<listItem title="Destination" location="models/destination.xml" visable="false" size="700"/>
 </model>

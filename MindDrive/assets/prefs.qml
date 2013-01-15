@@ -8,10 +8,10 @@ Page {
 		objectName: "mind_template_preferences"	
 			
 		//Background 
-		background: backgroundPaint.imagePaint            
+		background: backgroundPainta.imagePaint            
 		attachedObjects: [
 		    ImagePaintDefinition {
-		        id: backgroundPaint
+		        id: backgroundPainta
 		        imageSource: "img/editingBG.png"
 		        repeatPattern: RepeatPattern.XY
 		    }
@@ -66,6 +66,7 @@ Page {
 		               bottomMargin: 25
 				        ExpandableItem {
 			                bottomMargin: 25
+			                prefSize: ListItemData.size
 				            prefHeader: ListItemData.title
 				            prefList: ListItemData.location
 				            prefVisible: ListItemData.visable
