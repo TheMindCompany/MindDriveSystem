@@ -20,12 +20,11 @@ Page {
 		//Page Header
 		Container {
 			layout: DockLayout {}
-			preferredWidth: maxWidth
 			leftPadding: 25
 			rightPadding: 25
 			topPadding: 25
 			bottomMargin: 40
-			
+			preferredWidth: 700			
 			//Header Icon 
             Container { 
                 layout: DockLayout {}
@@ -48,34 +47,32 @@ Page {
         }//End Page Header
         
 	    //Elements
-	    Container {
-	        layout: StackLayout {}
-	        rightPadding: 35
-	        leftPadding: 35
-	        ExpandableItem {
-                bottomMargin: 25
-	            prefHeader: "Data To Track"
-	            prefList: "models/trackData.xml"
-	            expandImage: "img/plus.png";
-	            collapseImage: "img/minus.png";
-	            prefVisible: true
-	        }
-	        ExpandableItem {
-                bottomMargin: 25
-	            prefHeader: "Auto Reports"
-	            prefList: "models/autoSummary.xml"
-	            expandImage: "img/plus.png";
-	            collapseImage: "img/minus.png";
-	            prefVisible: false
-	        }
-	        ExpandableItem {
-                bottomMargin: 25
-	            prefHeader: "Destinations"
-	            prefList: "models/destination.xml"
-	            expandImage: "img/plus.png";
-	            collapseImage: "img/minus.png";
-	            prefVisible: false
-	        }
+    ListView {
+        id: xmlBody
+        dataModel: XmlDataModel {
+            id: modelSource
+                       source: "models/prefList.xml"}
+	       //List of Components
+	       listItemComponents: [  
+	                               
+		       //Component One    
+		       ListItemComponent {
+		           type: "listItem"
+		           Container {
+		               layout: DockLayout {}
+		               leftPadding: 20
+		               rightPadding: 20
+		               topPadding: 25
+		               bottomMargin: 25
+				        ExpandableItem {
+			                bottomMargin: 25
+				            prefHeader: ListItemData.title
+				            prefList: ListItemData.location
+				            prefVisible: ListItemData.visable
+				        }
+				    }
+				}
+	      ]
 	    }//End Elements
 	}//End Background Container
 }//End Page

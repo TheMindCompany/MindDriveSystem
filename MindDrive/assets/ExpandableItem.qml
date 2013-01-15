@@ -1,37 +1,68 @@
 import bb.cascades 1.0
 
 Container {
-    property alias prefHeader: btnHeader.text
+    property alias prefHeader: btnText.text
     property alias prefList: modelSource.source
     property alias prefVisible: xmlBody.visible
-    property string collapseImage
-    property string expandImage
     onPrefVisibleChanged: {
-        if (prefVisible) {
-            btnHeader.imageSource = collapseImage;
+        if (prefVisible) {//when true have minus show
+            btnHeader.defaultImageSource = "img/minus.png";
+            btnHeader.pressedImageSource = "img/plus.png";
         } else {
-            btnHeader.imageSource = expandImage;
+            btnHeader.pressedImageSource = "img/minus.png";
+            btnHeader.defaultImageSource = "img/plus.png";
+            
         }
     }
-    
-    Button {
-        id: btnHeader
-        text: "default header"
-        preferredWidth: maxWidth
-        imageSource: collapseImage
-        onClicked: {
-            if (prefVisible) {
-                xmlBody.visible = false;
-                btnHeader.imageSource = expandImage;
-            } else {
-                xmlBody.visible = true;
-                btnHeader.imageSource = collapseImage;
-            }
-        }
-    }
-    
+    Container {
+        layout: DockLayout {}
+        verticalAlignment: VerticalAlignment.Center
+        overlapTouchPolicy: OverlapTouchPolicy.Allow
+        ImageButton { 
+                id: btnHeader       
+	        defaultImageSource: {
+	             if (prefVisible) {
+	                     defaultImageSource: "img/minus.png"
+	                 } else {
+	                     defaultImageSource: "img/plus.png"}
+	            }
+	        
+	        onClicked: {
+	            if (prefVisible) {
+	                xmlBody.visible = false;
+	                btnHeader.pressedImageSource = "img/minus.png";
+	                btnHeader.defaultImageSource = "img/plus.png";
+	            } else {
+	                xmlBody.visible = true;
+	                btnHeader.defaultImageSource = "img/minus.png";
+	                btnHeader.pressedImageSource = "img/plus.png";
+	            }
+	        }
+        }//End Image Button
+        
+        Container {
+            leftPadding: 110
+            layout: DockLayout {
+                        
+                    }
+                    horizontalAlignment: HorizontalAlignment.Left
+            verticalAlignment: VerticalAlignment.Center
+            bottomPadding: 8.0
+            Label {
+		        id: btnText
+		        text: "default text"
+	            textStyle.color: Color.White
+	            textStyle.fontSize: FontSize.XLarge
+	            textStyle.fontWeight: FontWeight.Bold
+	            maxWidth: maxWidth
+	        }
+	    }
+	}
+	
     ListView {
-        id: xmlBody
+        id: xmlBody 
+        
+                preferredHeight: 900
         dataModel: XmlDataModel {
             id: modelSource
                        source: "model default"}
@@ -107,7 +138,30 @@ Container {
 	                   value: dateFromTime()
 	               }
                }
-           }
+           },//End Component Three
+           
+           //Compontent Four
+           ListItemComponent {
+               type: "listItemDrop"
+               Container {                                        
+  	               preferredWidth: maxWidth
+  	               leftPadding: 80
+  	               rightPadding: 30
+  	               bottomMargin: 25
+	  	           topPadding: 25   
+	  	           DropDown {
+	  	               title: "Interval" 
+	  	               enabled: true
+	  	               
+	  	            //temp option for test - will be dynamic   
+                    Option {
+	                          text: "1 Day"
+	                          value: "1"                                   
+                    }
+                }
+               }
+           }//End Component Four
+           
        ]//End List of Components
     }//End List View
 }
