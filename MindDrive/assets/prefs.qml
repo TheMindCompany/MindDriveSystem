@@ -23,8 +23,8 @@ Page {
 			leftPadding: 25
 			rightPadding: 25
 			topPadding: 25
-			bottomMargin: 40
-			preferredWidth: 700			
+			bottomMargin: 20
+			preferredWidth: maxWidth			
 			//Header Icon 
             Container { 
                 layout: DockLayout {}
@@ -49,6 +49,7 @@ Page {
 	    //Elements
     ListView {
         id: xmlBody
+        preferredHeight: 1000
         dataModel: XmlDataModel {
             id: modelSource
                        source: "models/prefList.xml"}

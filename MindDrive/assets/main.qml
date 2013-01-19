@@ -1,3 +1,4 @@
+
 import bb.cascades 1.0
 
 NavigationPane {
@@ -14,7 +15,7 @@ Page {
 		attachedObjects: [
 		    ImagePaintDefinition {
 		        id: backgroundPaint
-		        imageSource: "asset:///img/mainBG.png"
+		        imageSource: "img/mainBG.png"
 		        repeatPattern: RepeatPattern.XY
 		    }
 		]//End Background
@@ -25,25 +26,36 @@ Page {
 	        horizontalAlignment:HorizontalAlignment.Center
 	        objectName: "mind_template_elements"
 	        topPadding: 200
-		                    
+		    Container {   
+		        layout: StackLayout {
+                      
+                  }          
+                  horizontalAlignment: HorizontalAlignment.Center
 	        //Logo           
 	        ImageView {
 	            objectName: "mindDrive"                
-	            imageSource: "asset:///img/mindDrive.png"
+	            imageSource: "img/mindDrive.png"
 	        }//End Logo
-		            
+		   }
 	        //Navigation on Screen
 	        Container {
 		        id: mainNavButtons
-		        topMargin: 100
-		        layout: StackLayout {
-		            orientation: LayoutOrientation.LeftToRight}	
+		        topMargin: 200
+		        layout: DockLayout {
+                  }
 		        horizontalAlignment:HorizontalAlignment.Center
-		            
+		        preferredWidth: maxWidth
+		        leftPadding: 100
+		        rightPadding: 100
+              Container {
+                  layout: DockLayout {
+                          }
+                  horizontalAlignment: HorizontalAlignment.Left
 		        //Reports
 		        ImageButton {
 		        objectName: "Report"
-		        defaultImageSource: "asset:///img/buildReport.png" 
+		        pressedImageSource: "img/reportsDown.png"
+		        defaultImageSource: "img/reports.png" 
 		        onClicked: {
 		                // show detail page when the button is clicked
 		                var page = getReportPage();
@@ -60,11 +72,16 @@ Page {
 		                id: reportPageDefinition
 		                source: "report.qml"}]
 		        }//End Reports  
-		        
+		    }
+		    Container {
+		        layout: DockLayout {                
+                  }
+                  horizontalAlignment: HorizontalAlignment.Right
 		        //Link Car    
 		        ImageButton {
 		            objectName: "Link"
-		            defaultImageSource: "asset:///img/linkCar.png"
+		            pressedImageSource: "img/linkedDown.png"
+		            defaultImageSource: "img/linked.png"
 		            onClicked: {
 		                // show detail page when the button is clicked
 		                var page = getLinkCarPage();
@@ -82,20 +99,23 @@ Page {
 		                id: linkCarPageDefinition
 		                source: "linkCar.qml"}]
 		        }//End Link Car
+		    }
 		    }//End Navigation On Screen
 	
-	        //Bottom Navigation Bar    
+	        //Bottom Navigation Bar     
 	        Container {
+	            
 		        layout: StackLayout {
 		        orientation: LayoutOrientation.LeftToRight}	
 		        horizontalAlignment:HorizontalAlignment.Right
 		        verticalAlignment: VerticalAlignment.Bottom
-		        topPadding: 200
+		        topPadding: 150
+		        rightPadding: 50
 		        
 		        //Preferences
 		        ImageButton {
 		            objectName: "Preferences" 
-		            defaultImageSource: "asset:///img/Preferences.png"
+		            defaultImageSource: "img/Preferences.png"
 		            bottomMargin: 10
 		            rightMargin: 30
 		            onClicked: {

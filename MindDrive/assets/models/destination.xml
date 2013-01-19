@@ -1,7 +1,5 @@
 <model>
-	<listItem title="Email"/>
-	<listItem title="SMS"/>
-	<listItem title="Data Email"/>
-		<listItemSub title="XML"/>
-		<listItemSub title="SQL"/>
+	<listItemEmail title="Email"/>
+	<listItemPhone title="SMS"/>
+	<listItemMultiField title="Data Email" titleTwo="XML Data" titleThree="SQL Data"/>
 </model>

@@ -1,7 +1,5 @@
 <model>
-	<listItem title="Auto"/>
-	<listItem title="Time Interval"/>
-		<listItemDate/>
-		<listItemDrop/>
-	<listItem title="Each Drive Trip"/>
+	<listItem title="Auto" identifier="1"/>
+	<listItemTimeInterval title="Time Interval" timePicker="Starting Date" intervalPicker="Interval" identifier="2"/>
+	<listItem title="Each Drive Trip" identifier="3"/>
 </model>

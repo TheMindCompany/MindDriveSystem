@@ -1,7 +1,5 @@
 <model>
 	<listItem title="Time"/>
 	<listItem title="Distance"/>
-	<listItem title="Fuel Consumption"/>
-		<listItemSub title="Gas"/>
-		<listItemSub title="Electricity"/>
+	<listItemMultiCheck title="Fuel Consumption" titleTwo="Gas" titleThree="Electricity"/>
 </model>
