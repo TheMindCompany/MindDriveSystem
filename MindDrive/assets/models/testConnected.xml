@@ -1,0 +1,4 @@
+<model>
+	<listItem title="Tanker" make="GMC" model="Sierra" active="true"/>
+	<listItem title="Sonia's Girl" make="CHEVY" model="Volt" active="false"/>
+</model>
