@@ -1,27 +1,90 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Mind Drive Assist</title>
-<link href="HTML5_thrColFixHdr.css" rel="stylesheet" type="text/css"><!--[if lt IE 9]>
-<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-<![endif]-->
+		<link href="HTML5_thrColFixHdr.css" rel="stylesheet" type="text/css">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link rel="stylesheet" href="GMLIB/com.gm.widgets.css" type="text/css"/>
+        <script type="text/javascript" src="GMLIB/com.gm.widgets.js"></script>
+        <script type="text/javascript" src="GMLIB/comm.js"></script>
+        <script type="text/javascript" src="GMLIB/info.js"></script>
+        <script type="text/javascript" src="GMLIB/io.js"></script>
+        <script type="text/javascript" src="GMLIB/phone.js"></script>
+        <script type="text/javascript" src="GMLIB/system.js"></script>
+        <script type="text/javascript" src="GMLIB/ui.js"></script>
+        <script type="text/javascript" src="GMLIB/util.js"></script>
+        <script type="text/javascript" src="main.js"></script>
+        <link rel="stylesheet" href="main.css" type="text/css"/>
 </head>
 
-<body>
+<body onload="gm.system.init();javascript:init();">
 
 <div class="container">
   <header>
-  <!-- Empty Header for Icon Tray -->
-  </header>
-  <article class="content">
-    
-    <section><img src="img/logo.png" alt="Mind Drive Assist" width="600" height="317" align="middle"></section>
-  <!-- end .content --></article>
+  <div>
+  	<img id="phoneIcon" src="img/phoneActive.png" width="40" height="40" align="bottom">  
+  </div>
+  </header>      
+  <section>
+      <aside>
+          <img src="img/logo.png" alt="Mind Drive Assist" align="left">
+      </aside>
+      
+      <article id="noPhone">
+      	<p>You have no active Bluetooth connected devices.  Please ensure you have paired your 
+      	   phone with the vehicle before proceeding.</p>
+      </article>
+      
+      <article id="pickPhoneMsg">
+      	<p>You currently have no active devices.  You may add a device by clicking the below 
+      	   button or ensuring your phone is with you and charged enough for radio signal broadcast.</p>      	
+      	<div id="btnAddPhone"></div>
+      </article>     
+       
+      <article id="pickPhone">
+      	<div id="phoneList"></div>    
+      </article>      
+      
+      <article id="mainDisplay">
+		<table class="tbl">
+			<tr class="tblRow">
+				<td colspan="2">
+					<p>Tracking Driving Data</p>
+				</td>
+			</tr>
+			<tr class="tblRow">
+				<td class="tblColOne">
+					<p>Time: </p>
+				</td>
+				<td id="time" class="tblColTwo">
+					<p>Car Not On!</p>
+				</td>
+			</tr>
+			<tr class="tblRow">
+				<td class="tblColOne">
+					<p>Distance: </p>
+				</td>
+				<td id="distance" class="tblColTwo">
+					<p>Car Not On!</p>
+				</td>
+			</tr>
+			<tr class="tblRow">
+				<td class="tblColOne">
+					<p>Fuel: </p>
+				</td>
+				<td id="fuel" class="tblColTwo">
+					<p>Car Not On!</p>
+				</td>
+			</tr>
+		</table>
+      </article>
+  </section>
+
   
   <footer>
 	
   </footer>
-  <!-- end .container --></div>
+  <!-- end .container -->
+</div>
 </body>
 </html>
