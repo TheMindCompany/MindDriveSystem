@@ -1,7 +1,6 @@
 /*!
  * bluetooth.js - Mind Drive Assist
- * http://lab.hakim.se/scroll-effects
- * MIT licensed
+ * http://www.themindspot.com/minddrive
  * 
  * Copyright (C) 2013 The Mind Company, http://www.themindspot.com
  * Author: Brandon Laurence Clark
