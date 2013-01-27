@@ -1,9 +1,17 @@
+<!-- 
+  index.html - Mind Drive Assist
+  http://lab.hakim.se/scroll-effects
+  MIT licensed
+  
+  Copyright (C) 2013 The Mind Company, http://www.themindspot.com
+  Author: Brandon Laurence Clark
+ -->
 <!DOCTYPE HTML>
 <html>
 <head>
 <title>Mind Drive Assist</title>
-		<link href="HTML5_thrColFixHdr.css" rel="stylesheet" type="text/css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link rel="stylesheet" href="css/main.css" type="text/css"/>
         <link rel="stylesheet" href="GMLIB/com.gm.widgets.css" type="text/css"/>
         <script type="text/javascript" src="GMLIB/com.gm.widgets.js"></script>
         <script type="text/javascript" src="GMLIB/comm.js"></script>
@@ -13,8 +21,11 @@
         <script type="text/javascript" src="GMLIB/system.js"></script>
         <script type="text/javascript" src="GMLIB/ui.js"></script>
         <script type="text/javascript" src="GMLIB/util.js"></script>
-        <script type="text/javascript" src="main.js"></script>
-        <link rel="stylesheet" href="main.css" type="text/css"/>
+        <script type="text/javascript" src="js/data.js"></script>
+        <script type="text/javascript" src="js/file.js"></script>
+        <script type="text/javascript" src="js/bluetooth.js"></script>
+        <script type="text/javascript" src="js/navigation.js"></script>
+        <script type="text/javascript" src="js/main.js"></script>
 </head>
 
 <body onload="gm.system.init();javascript:init();">
@@ -27,7 +38,7 @@
   </header>      
   <section>
       <aside>
-          <img src="img/logo.png" alt="Mind Drive Assist" align="left">
+          <img id="logo" src="img/logo.png" alt="Mind Drive Assist" align="left">
       </aside>
       
       <article id="noPhone">
@@ -42,13 +53,13 @@
       </article>     
        
       <article id="pickPhone">
-      	<div id="phoneList"></div>    
-      </article>      
-      
+		<ul id="pickPhoneList">
+		</ul>		
+      </article>       
       <article id="mainDisplay">
 		<table class="tbl">
 			<tr class="tblRow">
-				<td colspan="2">
+				<td colspan="2" class="tblHeader">
 					<p>Tracking Driving Data</p>
 				</td>
 			</tr>

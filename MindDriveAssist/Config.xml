@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <gmWebApp>
-	<AppID>49741234</AppID>
+	<AppID>48909604</AppID>
 	<AppType>RemoteHigh</AppType>
-	<FriendlyName>MindDriveAssist</FriendlyName>
+	<FriendlyName>Mind Drive</FriendlyName>
 	<VehicleStatus>Drive</VehicleStatus>
 	<AutoStart>true</AutoStart>
 	<AppCategory>Monitoring</AppCategory>

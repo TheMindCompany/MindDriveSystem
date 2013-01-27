@@ -1,0 +1,150 @@
+/*!
+ * main.css - Mind Drive Assist
+ * http://lab.hakim.se/scroll-effects
+ * MIT licensed
+ * 
+ * Copyright (C) 2013 The Mind Company, http://www.themindspot.com
+ * Author: Brandon Laurence Clark
+ */
+
+body {
+	background-image:url(../img/minddrive-gm-bg.png);
+	margin: 0;
+	padding: 0;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 100%;
+	font-style: normal;
+	font-variant: small-caps;
+	color: #FFF;
+	text-align: center;
+}
+ol, dl { 
+	padding: 0;
+	margin: 0;
+}
+ul {
+  position: relative;
+  width: 250px;
+  height: 150px;
+  list-style: none;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+ul li {
+  position: relative;
+  padding: 15px;
+  background: #eee;
+  color: #252525;
+  z-index: 2;
+  overflow: auto;
+  text-align: left;
+}
+ 
+ul li:nth-child(odd) {
+  background: #fff;
+}
+h1, h2, h3, h4, h5, h6, p {
+	margin-top: 0;	 
+	padding-right: 15px;
+	padding-left: 15px; 
+}
+a img { 
+	border: none;
+}
+a:link {
+	color: #42413C;
+	text-decoration: underline; 
+}
+a:visited {
+	color: #6E6C64;
+	text-decoration: underline;
+}
+a:hover, a:active, a:focus { 
+	text-decoration: none;
+}	
+.container {
+	width: 775px;
+	margin: 0 auto; /* the auto value on the sides, coupled with the width, centers the layout */
+	text-align: center;
+}
+/* ~~ The header is not given a width. It will extend the full width of your layout. ~~ */
+header {
+	font-size: 100%;
+	text-align: right;
+	padding-top: 100px;
+}
+#noPhone {	
+	padding: 100px 0 50px 0;
+	margin:0 20px 0 0;
+	text-align: justify;
+	vertical-align: middle;
+	display: none;
+}
+#pickPhone {	
+	padding: 40px 0 50px 0;
+	margin:0 40px 0 0;
+	text-align: center;
+	vertical-align: middle;
+	display: none;
+}
+#pickPhoneMsg {	
+	padding: 55px 0 50px 0;
+	margin:0 20px 0 0;
+	text-align: justify;
+	vertical-align: middle;
+	display: none;
+}
+#mainDisplay {	
+	padding: 50px 0 50px 0;
+	text-align: center;
+	vertical-align: middle;
+	display: none;
+}
+.tbl {
+	position: relative;
+	margin: 0;
+	padding: 0;
+}
+.tblHeader {
+	text-align: left;
+	font-weight: bolder;
+	font-size: xx-large;
+	white-space: nowrap;
+}
+.tblRow {
+	position: relative;
+}
+.tblColOne {	
+	position: relative;
+	 width: 110px;
+	 text-align: left;
+	 font-weight: bold;
+	 text-indent: 10px;
+	 font-size: large;
+}
+.tblColTwo {	
+	position: relative;
+	 text-align: left;
+	 font-size: large;
+	white-space: nowrap;
+}
+.content {
+	float: left;
+}
+/* ~~ The footer ~~ */
+footer {
+	position: relative;
+	clear: both; 
+}
+header, section, footer, aside, nav, article, figure {
+	display: block;
+}
+#logo {
+	padding-top: 20px;
+	padding-right: 20px;
+}
+#btnAddPhone {
+	text-align: center;
+	padding-top: 20px;
+	margin:0 20px 0 0;
+}
