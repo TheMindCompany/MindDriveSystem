@@ -8,7 +8,7 @@
 
 function twoDecimal(num) {
 	return parseFloat(Math.round(num * 100) / 100).toFixed(2);
-}
+}//End twoDecimal
 
 //fuel data
 var fuelStart = 'start', fuelLast;
@@ -22,7 +22,7 @@ function getFuel(){
 			}, 
 			["fuel_level"] 
 		);
-}
+}//End getFuel
 
 function getFuelUsed (fuelCurrent) {
 	if (fuelStart === 'start') {
@@ -32,23 +32,23 @@ function getFuelUsed (fuelCurrent) {
 		fuelLast = fuelCurrent;
 		return fuelStart - fuelCurrent;
 	}
-}	
+}//End getFuelUsed	
 
 function fuelToScreen (){
 	getFuel();
 	var fuel = getFuelUsed(fuelLast);
 	document.getElementById( 'fuel' ).innerHTML = "<p>" + fuel + "%" + "</p>";
-}
+}//End fuelToScreen
 
 /* TODO Currently watchFuel() will cause watchOdometer() to stop cycling. 
  * To fix temporarily fuelToScreen() has been placed in watchOdometer().  */
 function watchFuel () {
 	watchFuelLevel = setInterval(fuelToScreen, 1000);
-}
+}//End watchFuel
 
 function watchFuelStop () {
 	clearInterval(watchFuleLevel);
-}
+}//End watchFuelStop
 	
 //miles traveled data
 var odometerStart = 'start', odometerLast = 0;
@@ -63,7 +63,7 @@ function getOdometer () {
 			}, 
 			["odometer"] 
 		);
-}
+}//End getOdometer
 
 function getMileTraveled (odometerCurrent) {
 	if ((odometerStart == 'start') && (odometerCurrent == 0.1)) {
@@ -76,27 +76,31 @@ function getMileTraveled (odometerCurrent) {
 		odometerLast = odometerCurrent;
 		return twoDecimal(odometerCurrent - odometerStart);
 	}
-}
+}//End getMilesTraveled
+
+function odometerToScreen (odometerValue) {
+    document.getElementById( 'distance' ).innerHTML = "<p>" + getMileTraveled(odometerValue) + "</p>";
+}//End odometerToScreen
 
 function watchOdometer () {
 	watchVehicleDataID = gm.info.watchVehicleData(
 		    function(responseObj) {
 		    	if (odometerLast < responseObj.odometer){
-			        console.log('Success odometer: watchVehicleData -> ' + JSON.stringify(responseObj));
-			        document.getElementById( 'distance' ).innerHTML = "<p>" + getMileTraveled(responseObj.odometer) + "</p>";
-			        fuelToScreen();
+		    		odometerToScreen(responseObj.odometer);
+		    		fuelToScreen();//Here till a option to fix setInterval issue with above code or watchVehicleData covers fuel_level 
 		        }
 		    },
 		    function(responseObj) {
-		        console.log('Failure odometer: watchVehicleData.');
 		    },
 		    [
 		        "odometer"
 		    ]
 		);
-}
+}//End watchOdometer
 
 //Time Traveled
+var time;
+
 function buildTime(t) {
     minutes = t.getMinutes();
     seconds = t.getSeconds();
@@ -112,53 +116,38 @@ function buildTime(t) {
     } else {
         return minutes+":"+seconds;
     }
-}
- var time;
-// Call this to start the timer
+}//End buildTime
+
 function startTimer() {
-    // If time isn't an object, create new Date and set seconds/minutes to 0
     if (typeof(time) != "object") {
         time = new Date();
-        time.setSeconds(0); // Sets seconds to 0
-        time.setMinutes(0); // Sets minutes to 0
-        time.setHours(0); // Sets hours to 0
-        document.getElementById("time").innerHTML = "<p>" + buildTime(time) + "</p>"; // buildTime(time) returns 00:00
+        time.setSeconds(0); 
+        time.setMinutes(0);
+        time.setHours(0); 
+        document.getElementById("time").innerHTML = "<p>" + buildTime(time) + "</p>";
     }
-    // Update seconds, to be executed every second or 1000 miliseconds
     function changeTimer() {
         time.setSeconds(time.getSeconds()+1);
         document.getElementById("time").innerHTML = "<p>" + buildTime(time) + "</p>";
     }
-    // Set Interval to every second
     interval = setInterval(changeTimer, 1000);
-}
+}//End startTimer
  
-// Pauses timer, seconds/minute count will be the same when started again
 function pauseTimer() {
     clearInterval(interval);
-}
+}//End pauseTimer
  
-// Reset timer to 00:00
 function resetTimer() {
-    time = ""; // Turn time into a string
-    clearInterval(interval); // Clear interval
-    document.getElementById("show_timer_div").innerHTML = "00:00"; // Put timer to 0's
-}
+    time = ""; 
+    clearInterval(interval); 
+    document.getElementById("show_timer_div").innerHTML = "00:00"; 
+}//End resetTimer
 
-function isVehicleStarted () {
-
-	return true;
-}
-
-function displayData () {
-	
-	
-}
-
-var sendDisplay;
-function feedData () {
-	while (isVehicleStarted()) {
-		sendDisplay = setInterval(displayData, 60);
-	} 
-	clearInterval(sendDisplay);	
-}
+//All Three Data Variables
+function startDataTracking () {	
+	document.getElementById( 'distance' ).innerHTML = "<p>0</p>";
+	document.getElementById( 'fuel' ).innerHTML = "<p>0%</p>";
+	watchOdometer();
+	startTimer();
+	console.log("Data Tracking Started");
+}//End startDataTracking

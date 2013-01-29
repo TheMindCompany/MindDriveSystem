@@ -7,62 +7,48 @@
  */
 
 //Bluetooth functions
+var connectedPhones = new Array();
+var phoneItemNumber;
+
 function getBT () {
 	gm.communication.getBTServices(
-		function(response) {
-			var i = response.length;
-			var phoneIcon = document.getElementById( 'phoneIcon' );			
+		function(response) {		
 			if (response == "") {
-				console.log('onLoad: no bluetooth profiles');	
-				phoneIcon.src = "img/phoneNone.png";
 				phoneToggle("noPhone");
-			} else {
-				for (var f = 0; f < i; f++) {
-					if (phoneList[f] == response[f].UUID){
-						console.log('onLoad: BLUETOOTH YOU WANT IS FOUND!!!');
-						phoneIcon.src = "img/phoneOn.png";
-						phoneToggle("mainDisplay");
-						break;
-					} else {
-						console.log('onLoad: BLUETOOTH OBJECT #' + f + '   ////////////////////////');
-						console.log('bluetooth object uuid:           ' + response[f].UUID			);
-						console.log('bluetooth object service number: ' + response[f].serviceNumber	);
-						console.log('bluetooth object service name:   ' + response[f].serviceName	);
-						console.log('bluetooth object device handle:  ' + response[f].deviceHandle	);
-						phoneIcon.src = "img/phoneActive.png";   
-					    phoneToggle("pickPhoneMsg");
+			} else {		
+				for ( var i = 0; i < phoneLength; i++) {
+					for ( var f = 0; f < response.length; f++) {
+						if (phoneList[i].uuid == response[f].UUID){
+							phoneToggle("mainDisplay");
+						} else {
+							connectedPhones = response;
+							if (f == i)
+								phoneToggle("pickPhoneMsg");
+						}
 					}
 				}
 			}				
 		}
 	);
+	watchBT();  	
 }//End getBT
+
 
 function watchBT () { 
 	gm.communication.watchBTServices(
-		function(response) {
-			var i = response.length;
-			var phoneIcon = document.getElementById( 'phoneIcon' );			
+		function(response) {		
 			if (response == "") {
-				console.log('no bluetooth profiles');	
-				phoneIcon.src = "img/phoneNone.png";
 				phoneToggle("noPhone");
 			} else {
-			    readPhoneList();
-				for (var f = 0; f < i; f++) {
-					if (phoneList[f] == response[f].UUID){
-						console.log('BLUETOOTH YOU WANT IS FOUND!!!');
-						phoneIcon.src = "img/phoneOn.png";
-						phoneToggle("mainDisplay");
-						break;
-					} else {
-						console.log('BLUETOOTH OBJECT #' + f + '   ////////////////////////');
-						console.log('bluetooth object uuid:           ' + response[f].UUID			);
-						console.log('bluetooth object service number: ' + response[f].serviceNumber	);
-						console.log('bluetooth object service name:   ' + response[f].serviceName	);
-						console.log('bluetooth object device handle:  ' + response[f].deviceHandle	);
-						phoneIcon.src = "img/phoneActive.png";   
-					    phoneToggle("pickPhoneMsg");
+				for ( var i = 0; i < phoneLength; i++) {
+					for ( var f = 0; f < response.length; f++) {
+						if (phoneList[i].uuid == response[f].UUID){
+							phoneToggle("mainDisplay"); 
+						} else {
+							connectedPhones = response;
+							if (f == i)
+								phoneToggle("pickPhoneMsg");
+						}
 					}
 				}
 			}	

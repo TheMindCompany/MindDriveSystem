@@ -29,6 +29,13 @@ ul {
   overflow-x: hidden;
   overflow-y: scroll;
 }
+li {
+  vertical-align:middle;
+  font-size: x-large;
+  font-style: normal;
+  font-family: sans-serif;
+  font-weight: bold;
+}
 ul li {
   position: relative;
   padding: 15px;
@@ -36,7 +43,7 @@ ul li {
   color: #252525;
   z-index: 2;
   overflow: auto;
-  text-align: left;
+  text-align: left;  
 }
  
 ul li:nth-child(odd) {
@@ -146,4 +153,15 @@ header, section, footer, aside, nav, article, figure {
 	text-align: center;
 	padding-top: 20px;
 	margin:0 20px 0 0;
+}
+.btnPlusIcon {
+	vertical-align:middle;
+	float: right;
+	text-align: right;
+}
+li:HOVER {
+	background-color: #969696;
+}
+li:nth-child(odd):HOVER {
+	background-color: #969696;
 }

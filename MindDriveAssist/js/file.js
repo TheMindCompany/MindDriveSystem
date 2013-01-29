@@ -10,32 +10,59 @@
  * of separation of data for debugging purposes.       */
 
 //Phone list for saved and available Blue tooth profiles
-var phoneList = new Array();
-var phone, list;
+var phoneList = {};
+var phone, phoneLength;
 	
 function writeDefaultPhoneList () {
 	gm.io.writeFile(
 	    'store/phones.xml',
 	    '<phone>' +
-	    	'<uuid>a1b2c3d4e5</uuid>' +
+	    	'<uuid>1b2c3d4e5</uuid>' +
 	    	'<number>99999</number>' +
 	    	'<name>jjjjjjj</name>' +
 	    	'<handle>IPhone</handle>' +
 	    '</phone>'
 	);
+	console.log("Wrote Default List XML");
 }//End writeDefaultPhoneList
 
+var phoneData = new String();
+function buildPhoneListXML () {
+	for (var i = 0; i < phoneLength; i++){
+		phoneData = phoneData +
+					'<phone>' +
+						'<uuid>' + phoneList[i].uuid + '</uuid>' +
+						'<number>' + phoneList[i].number + '</number>' +
+						'<name>' + phoneList[i].name + '</name>' +
+						'<handle>' + phoneList[i].handle + '</handle>' +
+					'</phone>';
+	}
+}
+
 function writePhoneList (uuid,number,name,handle) {
+	var phoneDataSave = new String();
+	buildPhoneListXML();
+	phoneDataSave = '<phone>' +
+						'<uuid>' + uuid + '</uuid>' +
+						'<number>' + number + '</number>' +
+						'<name>' + name + '</name>' +
+						'<handle>' + handle + '</handle>' +
+					'</phone>';
 	gm.io.writeFile(
 	    'store/phones.xml',
-	    '<phone>' +
-	    	'<uuid>' + uuid + '</uuid>' +
-	    	'<number>' + number + '</number>' +
-	    	'<name>' + name + '</name>' +
-	    	'<handle>' + handle + '</handle>' +
-	    '</phone>'
+	    '<model>' +
+	    	phoneData + phoneDataSave +
+	    '</model>'
 	);
-	phoneList[phoneList.length + 1] = uuid;
+    phoneList[phoneLength] = {
+			uuid: uuid,
+			number: number,
+			name: name,
+			handle: handle
+    };
+	phoneLength = phoneLength + 1;
+	phoneData = "";
+	console.log("Selected Item Added to List XML");
 }//End writePhoneList
 
 function readPhoneList () {
@@ -44,9 +71,14 @@ function readPhoneList () {
 	xmlhttp.send();
 	var xmlDoc = xmlhttp.responseXML;
 	phone = xmlDoc.getElementsByTagName("phone");
-	var xmlLength = phone.length;
-	for (var i=0; i < xmlLength; i++){
-		phoneList[i] = phone[i].getElementsByTagName("uuid")[0].childNodes[0].nodeValue;
+	phoneLength = xmlDoc.getElementsByTagName("phone").length;
+	for (var i=0; i < phoneLength; i++){
+	    phoneList[i] = {
+				uuid: phone[i].getElementsByTagName("uuid")[0].childNodes[0].nodeValue,
+				number: phone[i].getElementsByTagName("number")[0].childNodes[0].nodeValue,
+				name: phone[i].getElementsByTagName("name")[0].childNodes[0].nodeValue,
+				handle: phone[i].getElementsByTagName("handle")[0].childNodes[0].nodeValue
+	    };
 	}	
 }//End readPhoneList
 
@@ -54,16 +86,14 @@ function checkFile () {
 	gm.io.getResource(
 	    function(response){
 	    	if (response == null) { 
-	    		console.log('Failure: getResource. Path: Creating File' );
 	    		writeDefaultPhoneList();
 			    readPhoneList();
 	    	} else {
-	    		console.log('Success: getResource. Path: ' + response);
 			    readPhoneList();
 	    	}
 	    },
 	    function(){
-	        console.log('Failure: getResource');
+	    	//something should go here.
 	    },
 	    "phones.xml",
 	    {
@@ -90,6 +120,7 @@ function writeTrackedData () {
 		    	'<odometerEnd>' + odometerLast + '</odometerEnd>' +
 		    '</trip>'
 		);
+	console.log("Wrote Tracked Data XML");
 }
 
 
